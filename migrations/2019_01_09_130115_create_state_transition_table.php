@@ -13,14 +13,14 @@ class CreateStateTransitionTable extends Migration
     {
         Schema::create('state_transitions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('owner_class');
+            $table->string('owner_type');
             $table->integer('owner_id');
             $table->string('transition');
             $table->string('to');
             $table->integer('user_id')->nullable();
             $table->timestamps();
 
-            $table->index(['owner_class', 'owner_id']);
+            $table->index(['owner_type', 'owner_id']);
         });
     }
 

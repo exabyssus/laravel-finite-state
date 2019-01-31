@@ -3,17 +3,17 @@
 namespace Exabyssus\StateMachine\Traits;
 
 use Exabyssus\StateMachine\Models\StateTransition;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasStateHistory
 {
     /**
-     * @return HasMany
+     * @return MorphMany
      */
-    public function transitionHistory(): HasMany
+    public function transitionHistory(): MorphMany
     {
-        return $this->morphMany(StateTransition::class);
+        return $this->morphMany(StateTransition::class, 'owner');
     }
 
     /**
