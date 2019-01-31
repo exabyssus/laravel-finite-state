@@ -2,7 +2,7 @@
   "name": "exabyssus/laravel-finite-state",
   "description": "Mini Laravel Finite State Machine.",
   "license": "MIT",
-  "type": "project",
+  "type": "library",
   "require": {
     "php": "^7.1"
   },
