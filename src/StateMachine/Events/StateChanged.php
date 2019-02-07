@@ -1,6 +1,6 @@
 <?php
 
-namespace Exabyssus\StateMachine\Events;
+namespace CubeSystems\StateMachine\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -13,16 +13,19 @@ class StateChanged
 
     private $object;
     private $transition;
+    private $stateTo;
 
     /**
      * StateChanged constructor.
      * @param $object
      * @param $transition
+     * @param $stateTo
      */
-    public function __construct($object, $transition)
+    public function __construct($object, string $transition, string $stateTo)
     {
         $this->object = $object;
         $this->transition = $transition;
+        $this->stateTo = $stateTo;
     }
 
 

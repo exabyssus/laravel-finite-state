@@ -48,6 +48,7 @@ class StateMachine implements StateMachineInterface
         return true;
     }
 
+
     /**
      * {@inheritDoc}
      */
@@ -62,11 +63,10 @@ class StateMachine implements StateMachineInterface
             ));
         }
 
-        $stateFrom = $this->config['transitions'][$transition]['from'];
         $stateTo = $this->config['transitions'][$transition]['to'];
 
         if (method_exists($this->object, 'beforeStateChange')) {
-            $resolve = $this->object->beforeStateChange($transition, $stateFrom, $stateTo);
+            $resolve = $this->object->beforeStateChange($transition, $stateTo);
 
             if (! $resolve) {
                 return;
@@ -75,12 +75,13 @@ class StateMachine implements StateMachineInterface
 
         $this->setState($stateTo);
 
-        event(new StateChanged($this->object, $this->config['transitions'][$transition]));
+        event(new StateChanged($this->object, $transition, $stateTo));
 
         if (method_exists($this->object, 'afterStateChange')) {
             $this->object->afterStateChange($transition, $stateTo);
         }
     }
+
 
     /**
      * {@inheritDoc}
