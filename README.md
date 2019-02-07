@@ -1,5 +1,10 @@
 # Laravel Finite State
 
+[![Latest Stable Version](https://poser.pugx.org/exabyssus/laravel-finite-state/v/stable)](https://packagist.org/packages/exabyssus/laravel-finite-state)
+[![Latest Unstable Version](https://poser.pugx.org/exabyssus/laravel-finite-state/v/unstable)](https://packagist.org/packages/exabyssus/laravel-finite-state)
+[![Total Downloads](https://poser.pugx.org/exabyssus/laravel-finite-state/downloads)](https://packagist.org/packages/exabyssus/laravel-finite-state)
+[![License](https://poser.pugx.org/exabyssus/laravel-finite-state/license)](https://packagist.org/packages/exabyssus/laravel-finite-state)
+
 Package gives an easy way to add StateMachine to your Eloquent Models.
 
 StateMachine helps you control state flow and records state history. 
