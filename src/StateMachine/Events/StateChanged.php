@@ -11,9 +11,9 @@ class StateChanged
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $object;
-    private $transition;
-    private $stateTo;
+    public $object;
+    public $transition;
+    public $stateTo;
 
     /**
      * StateChanged constructor.
