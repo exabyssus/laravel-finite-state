@@ -39,4 +39,40 @@ trait HasStateHistory
 
         $this->transitionHistory()->create($transitionData);
     }
+
+    /**
+     * @param string $stateTo
+     * @return \Illuminate\Support\Collection
+     */
+    public function findHistoricalStatesByTo(string $stateTo)
+    {
+        return $this->transitionHistory->where('to', $stateTo);
+    }
+
+    /**
+     * @param string $transition
+     * @return \Illuminate\Support\Collection
+     */
+    public function findHistoricalStatesByTransition(string $transition)
+    {
+        return $this->transitionHistory->where('transition', $transition);
+    }
+
+    /**
+     * @param string $stateTo
+     * @return bool
+     */
+    public function hasStateInHistory(string $stateTo): bool
+    {
+        return $this->findHistoricalStatesByTo($stateTo)->isNotEmpty();
+    }
+
+    /**
+     * @param string $transition
+     * @return bool
+     */
+    public function hasTransitionInHistory(string $transition): bool
+    {
+        return $this->findHistoricalStatesByTransition($transition)->isNotEmpty();
+    }
 }
