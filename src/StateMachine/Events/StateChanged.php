@@ -1,6 +1,6 @@
 <?php
 
-namespace CubeSystems\StateMachine\Events;
+namespace Exabyssus\StateMachine\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
