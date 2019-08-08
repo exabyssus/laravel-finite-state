@@ -20,7 +20,31 @@ class StateMachineTest extends TestCase
 {
     use CreatesApplication;
 
-    protected $stateMachine;
+    protected const STATE_CONFIG = [
+        'order' => [
+            'state_property_name' => 'state',
+            'states' => [
+                'pending',
+                'confirmed',
+                'done',
+                'canceled',
+            ],
+            'transitions' => [
+                'confirm' => [
+                    'from' => ['pending'],
+                    'to' => 'confirmed'
+                ],
+                'complete' => [
+                    'from' => ['confirmed'],
+                    'to' => 'done'
+                ],
+                'cancel' => [
+                    'from' => ['pending', 'confirmed'],
+                    'to' => 'canceled'
+                ],
+            ]
+        ]
+    ];
 
     /**
      * @return void
@@ -28,7 +52,7 @@ class StateMachineTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        Config::set('state-machine', include(__DIR__ . '/../../config/state-machine.php'));
+        config()->set('state-machine', self::STATE_CONFIG);
     }
 
     /**
